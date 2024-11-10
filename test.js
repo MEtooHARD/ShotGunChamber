@@ -1,1 +1,0 @@
-console.log(Array.from(3).map(() => 4))
