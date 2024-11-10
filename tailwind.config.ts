@@ -8,9 +8,13 @@ const config: Config = {
   ],
   theme: {
     extend: {
+      borderWidth: {
+        '1': '1px'
+      },
       colors: {
         background: "var(--background)",
         foreground: "var(--foreground)",
+        'disabled': '#808080'
       },
     },
   },
