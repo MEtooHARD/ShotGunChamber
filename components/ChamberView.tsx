@@ -45,7 +45,7 @@ export function ChamberView() {
             </div>
             <div className="flex m-1 h-20 items-center">
                 <svg
-                    className="h-14 aspect-square"
+                    className="h-14 aspect-square cursor-pointer transform duration-75 hover:scale-110 active:scale-95"
                     onClick={() => { if (round > 0) setRound(prev => prev - 1) }}
                     viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                     <polygon fillRule="evenodd" points="9.414 12 16.707 19.293 15.293 20.707 6.586 12 15.293 3.293 16.707 4.707" />
@@ -55,7 +55,7 @@ export function ChamberView() {
                     value={`${toPercent(chamber.next_live_chance(round))} %`}>
                 </NumCard>
                 <svg
-                    className="h-14 aspect-square"
+                    className="h-14 aspect-square cursor-pointer transform duration-75 hover:scale-110 active:scale-95"
                     onClick={() => { if (round < sum - 1) setRound(prev => prev + 1) }}
                     viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                     <polygon fillRule="evenodd" points="14.586 12 7.293 4.707 8.707 3.293 17.414 12 8.707 20.707 7.293 19.293" />

@@ -17,7 +17,7 @@ export function NumAltBtn({
         `${enabled ? 'text-black' : 'text-disabled'}`,
         "w-full m-2 aspect-square",
         "rounded-md",
-        "select-none")}
+        "select-none cursor-pointer", `${enabled ? 'transform duration-75 hover:scale-105 active:scale-95' : ''}`)}
         onClick={onCLick}>
         {display}
     </div>

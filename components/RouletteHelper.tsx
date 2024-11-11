@@ -25,7 +25,7 @@ export function RouletteHelper() {
 
     return <>
         <div className="flex flex-col w-screen h-screen">
-            <div className="flex flex-col justify-center items-center w-full h-full overflow-scroll pb-2 pt-24">
+            <div className="flex flex-col justify-center items-center w-full h-full overflow-auto pb-2 pt-24">
                 <RoundsData.Provider value={{ rounds: rounds, set: { Lives: setLives, Blanks: setBlanks } }}>
                     {ready
                         ? <ChamberView></ChamberView>
