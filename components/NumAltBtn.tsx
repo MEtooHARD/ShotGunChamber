@@ -1,0 +1,24 @@
+import clsx from "clsx"
+
+type props = {
+    onCLick: () => void,
+    display: number | string,
+    enabled: boolean
+}
+
+export function NumAltBtn({
+    onCLick,
+    display,
+    enabled
+}: props) {
+    return <div className={clsx("flex", "flex-1", "justify-center", "items-center",
+        "font-medium text-3xl",
+        `${enabled ? 'border-black' : 'border-disabled'}`, "border-2",
+        `${enabled ? 'text-black' : 'text-disabled'}`,
+        "w-full m-2 aspect-square",
+        "rounded-md",
+        "select-none")}
+        onClick={onCLick}>
+        {display}
+    </div>
+}

@@ -1,4 +1,7 @@
 "use client"
+
+import clsx from "clsx";
+
 type props = {
     title: string;
     value: number | string;
@@ -8,12 +11,12 @@ export function NumCard({
     title, value
 }: props) {
     return <>
-        <div className="flex flex-1 flex-col justify-center items-center text-center
+        <div className="flex flex-col justify-center items-center text-center
             border-2 border-black rounded-lg
-            py-1 px-3 m-1
+            py-1 px-3 h-full
             font-bold">
-            <p className="select-none">{title}</p>
-            <p className="text-2xl select-none">{value}</p>
+            <p className="text-xl select-none">{title}</p>
+            <p className={clsx("text-2xl select-none", `${Number(value) < 0 ? 'text-red-500' : ''}`)}>{value}</p>
         </div>
     </>
 }

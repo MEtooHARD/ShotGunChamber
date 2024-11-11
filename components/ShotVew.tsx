@@ -5,7 +5,8 @@ import clsx from "clsx"
 
 type props = {
     type: Shot.Type,
-    setType: (type: Shot.Type) => void
+    setType: (type: Shot.Type) => void,
+    i: number
 }
 
 const typeColor = {
@@ -21,11 +22,17 @@ const nextType = {
 }
 
 export function ShotView({
-    type, setType
+    type, setType,
+    i
 }: props) {
     return <>
-        <div className={clsx("w-12 max-w-12 min-w-8 aspect-[3/5] m-1 rounded-sm", `${typeColor[type]}`)}
+        <div className={clsx("flex justify-center items-center",
+            "w-16 max-w-16 min-w-8 aspect-[3/5] m-1 rounded-sm",
+            `${true ? 'text-[#00ff66]' : 'text-[#707070]'}`, "font-extrabold text-6xl",
+            "select-none",
+            `${typeColor[type]}`)}
             onClick={() => setType(nextType[type])}>
+            {i + 1}
         </div>
     </>
 }

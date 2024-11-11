@@ -5,8 +5,9 @@ import { useRoundData } from "./RouletteHelper"
 import { NumCard } from "./NumCard";
 import { Chamber, Shot } from "@/classes/Roulette";
 import { ShotView } from "./ShotVew";
+import { LiveBlankCard } from "./LiveBlankCard";
 
-const toPercent = (val: number) => Math.round(val * 100).toFixed(2);
+const toPercent = (val: number) => (Math.round(val * 10000) / 100).toFixed(2);
 
 export function ChamberView() {
     const roundsData = useRoundData();
@@ -15,6 +16,9 @@ export function ChamberView() {
         { length: roundsData.rounds.lives + roundsData.rounds.blanks },
         () => (new Shot())
     ));
+
+    const [round, setRound] = useState<number>(0);
+    const sum = roundsData.rounds.lives + roundsData.rounds.blanks;
 
     const chamber = new Chamber(shots, roundsData.rounds.lives, roundsData.rounds.blanks);
 
@@ -26,34 +30,45 @@ export function ChamberView() {
 
     return <>
         <div className="flex flex-col justify-center items-center
-             w-full my-2">
-            <div className="flex flex-wrap justify-center">
-                <div className="flex flex-col w-40 m-2 rounded-xl border-2 border-black">
-                    <p className="flex justify-center items-center font-bold text-lg select-none">Initial</p>
-                    <div className="flex w-full">
-                        <NumCard title="Live" value={chamber.live}></NumCard>
-                        <NumCard title="Blank" value={chamber.blank}></NumCard>
-                    </div>
-                </div>
-                <div className="flex flex-col w-40 m-2 rounded-xl border-2 border-black">
-                    <p className="flex justify-center items-center font-bold text-lg select-none">Unknown</p>
-                    <div className="flex w-full">
-                        <NumCard title="Live" value={chamber.unknown_live}></NumCard>
-                        <NumCard title="Blank" value={chamber.unknown_blank}></NumCard>
-                    </div>
-                </div>
+             w-full my-1">
+            <div className="flex flex-wrap justify-center w-full">
+                <LiveBlankCard
+                    live={chamber.live}
+                    blank={chamber.blank}
+                    title="Initial">
+                </LiveBlankCard>
+                <LiveBlankCard
+                    live={chamber.unknown_live}
+                    blank={chamber.unknown_blank}
+                    title="Unkown">
+                </LiveBlankCard>
             </div>
-            <div className="font-bold text-2xl my-2">
-                <NumCard title="Next Live Chance" value={`${toPercent(chamber.next_live_chance)} %`}></NumCard>
+            <div className="flex m-1 h-20 items-center">
+                <svg
+                    className="h-14 aspect-square"
+                    onClick={() => { if (round > 0) setRound(prev => prev - 1) }}
+                    viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <polygon fill-rule="evenodd" points="9.414 12 16.707 19.293 15.293 20.707 6.586 12 15.293 3.293 16.707 4.707" />
+                </svg>
+                <NumCard
+                    title="Next Live"
+                    value={`${toPercent(chamber.next_live_chance)} %`}>
+                </NumCard>
+                <svg
+                    className="h-14 aspect-square"
+                    onClick={() => { if (round < sum - 1) setRound(prev => prev + 1) }}
+                    viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <polygon fill-rule="evenodd" points="14.586 12 7.293 4.707 8.707 3.293 17.414 12 8.707 20.707 7.293 19.293" />
+                </svg>
             </div>
-        </div>
+        </div >
         <div className="flex flex-wrap justify-around items-center
             border-2 border-black
             rounded-2xl
-            w-11/12 my-2 p-2"
+            w-11/12 my-1 p-2"
         >
             {chamber.shots.map((shot, i) =>
-                <ShotView key={i} type={shot.type}
+                <ShotView key={i} type={shot.type} i={i}
                     setType={(t) => {
                         updateShotType(i, t);
                     }}>

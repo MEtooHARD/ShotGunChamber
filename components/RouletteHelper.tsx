@@ -25,13 +25,11 @@ export function RouletteHelper() {
 
     return <>
         <div className="flex flex-col w-screen h-screen">
-            <div className="flex flex-col justify-center items-center w-full h-full overflow-scroll">
+            <div className="flex flex-col justify-center items-center w-full h-full overflow-scroll pb-2 pt-24">
                 <RoundsData.Provider value={{ rounds: rounds, set: { Lives: setLives, Blanks: setBlanks } }}>
                     {ready
                         ? <ChamberView></ChamberView>
-                        : <div className="flex justify-center">
-                            <RoundsSetter max={maxRounds}></RoundsSetter>
-                        </div>
+                        : <RoundsSetter></RoundsSetter>
                     }
                 </RoundsData.Provider>
             </div >
@@ -39,15 +37,15 @@ export function RouletteHelper() {
         </div>
         <div className="fixed bottom-0 left-0 w-full h-12 flex">
             <div className={clsx("flex-1 flex items-center justify-center",
-                "bg-black", "select-none",
-                `${ready ? 'text-disabled' : 'text-white'}`, "font-bold",
+                "bg-green-400", "select-none",
+                `${ready ? 'text-disabled' : 'text-black'}`, "font-bold",
                 "h-full")}
                 onClick={() => { setReady(true) }}>
                 Start
             </div>
             <div className={clsx("flex-1 flex items-center justify-center",
-                "bg-green-400", "select-none",
-                `${ready ? "text-black" : 'text-disabled'}`, "font-bold",
+                "bg-black", "select-none",
+                `${ready ? "text-green-400" : 'text-disabled'}`, "font-bold",
                 "h-full")}
                 onClick={() => {
                     setReady(false)
