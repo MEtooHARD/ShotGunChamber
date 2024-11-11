@@ -35,9 +35,16 @@ export class Chamber {
     get unknown_blank(): number { return this._blank - this.known_blank }
     get unknown_shots(): number { return this.shots_of(Shot.Type.Unknown) }
 
-    get next_live_chance(): number { return this.unknown_shots > 0 ? this.unknown_live / this.unknown_shots : 0; }
+    next_live_chance(i: number): number {
+        return i < this.live + this.blank - 1
+            ? this._shots[i + 1].type === Shot.Type.Unknown
+                ? this.unknown_shots > 0 ? this.unknown_live / this.unknown_shots : 0
+                : this._shots[i + 1].type === Shot.Type.Live ? 1 : 0
+            : 0;
+    }
 
     get shots(): Array<Shot> { return this._shots; }
+    shot(i: number): Shot { return this._shots[i]; }
 }
 
 type Setter = Dispatch<SetStateAction<number>>;

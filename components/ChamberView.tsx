@@ -48,17 +48,17 @@ export function ChamberView() {
                     className="h-14 aspect-square"
                     onClick={() => { if (round > 0) setRound(prev => prev - 1) }}
                     viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                    <polygon fill-rule="evenodd" points="9.414 12 16.707 19.293 15.293 20.707 6.586 12 15.293 3.293 16.707 4.707" />
+                    <polygon fillRule="evenodd" points="9.414 12 16.707 19.293 15.293 20.707 6.586 12 15.293 3.293 16.707 4.707" />
                 </svg>
                 <NumCard
                     title="Next Live"
-                    value={`${toPercent(chamber.next_live_chance)} %`}>
+                    value={`${toPercent(chamber.next_live_chance(round))} %`}>
                 </NumCard>
                 <svg
                     className="h-14 aspect-square"
                     onClick={() => { if (round < sum - 1) setRound(prev => prev + 1) }}
                     viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                    <polygon fill-rule="evenodd" points="14.586 12 7.293 4.707 8.707 3.293 17.414 12 8.707 20.707 7.293 19.293" />
+                    <polygon fillRule="evenodd" points="14.586 12 7.293 4.707 8.707 3.293 17.414 12 8.707 20.707 7.293 19.293" />
                 </svg>
             </div>
         </div >
@@ -68,7 +68,9 @@ export function ChamberView() {
             w-11/12 my-1 p-2"
         >
             {chamber.shots.map((shot, i) =>
-                <ShotView key={i} type={shot.type} i={i}
+                <ShotView highlight={i === round}
+                    key={i} i={i}
+                    type={shot.type}
                     setType={(t) => {
                         updateShotType(i, t);
                     }}>
