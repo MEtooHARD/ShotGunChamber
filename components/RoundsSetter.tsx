@@ -16,7 +16,12 @@ export function RoundsSetter() {
 
     return <>
         <p className="text-gray-400 font-bold text-2xl select-none">Rounds Counter</p>
-        <p className="text-gray-400 font-bold text-2xl select-none">For Buckshot Roulette</p>
+        <p className="text-gray-400 font-bold text-2xl select-none">For&ensp;
+            <a className="text-gray-500" target="_blank"
+                href="https://store.steampowered.com/app/2835570/Buckshot_Roulette/">
+                Buckshot Roulette
+            </a>
+        </p>
         <p className="text-gray-400 font-bold text-2xl select-none">Beta 1.2.1</p>
         <div className="m-4"></div>
         <div className="flex flex-wrap justify-center items-center
@@ -37,10 +42,8 @@ export function RoundsSetter() {
         </div>
         <div className="m-4"></div>
         <div className="flex text-gray-400 font-bold text-2xl items-center select-none">Made by&ensp;
-            <div className="flex flex-col">
+            <div className="flex flex-col text-gray-500">
                 <a href="https://github.com/MEtooHARD" target="_blank">MEtooHARD</a>
-                {/* <a href="https://github.com/MEtooHARD" target="_blank">MEtooHARD</a>
-                <a href="https://github.com/MEtooHARD" target="_blank">MEtooHARD</a> */}
             </div>
         </div>
     </>
