@@ -1,6 +1,6 @@
 {
   "name": "shot_gun_chamber",
-  "version": "0.1.0",
+  "version": "beta 1.2.2",
   "private": true,
   "scripts": {
     "dev": "next dev",

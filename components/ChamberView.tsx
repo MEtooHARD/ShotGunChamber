@@ -67,7 +67,7 @@ export function ChamberView() {
         <div className="flex flex-wrap justify-around items-center
             border-2 border-black
             rounded-2xl
-            w-11/12 my-1 p-2"
+            w-[95%] my-1 p-2 max-w-[72rem]"
         >
             {chamber.shots.map((shot, i) =>
                 <ShotView highlight={i === round}
