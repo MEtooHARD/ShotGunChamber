@@ -22,7 +22,7 @@ export function RoundsSetter() {
                 Buckshot Roulette
             </a>
         </p>
-        <p className="text-gray-400 font-bold text-2xl select-none">Beta 1.2.1</p>
+        <p className="text-gray-400 font-bold text-2xl select-none">Beta 1.2.2</p>
         <div className="m-4"></div>
         <div className="flex flex-wrap justify-center items-center
             w-full">
