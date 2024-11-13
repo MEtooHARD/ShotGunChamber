@@ -14,7 +14,8 @@ const config: Config = {
       colors: {
         background: "var(--background)",
         foreground: "var(--foreground)",
-        'disabled': '#808080'
+        'disabled': '#808080',
+        'gendark': '#ededed'
       },
     },
   },

@@ -45,7 +45,7 @@ export function RouletteHelper() {
             </div>
             <div className={clsx("flex-1 flex items-center justify-center",
                 "bg-black", "select-none", "text-2xl",
-                `${ready ? "text-green-400" : 'text-disabled'}`, "font-bold",
+                `${ready ? "text-red-500" : 'text-disabled'}`, "font-bold",
                 "h-full")}
                 onClick={() => {
                     setReady(false)

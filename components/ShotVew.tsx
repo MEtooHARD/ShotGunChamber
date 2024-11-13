@@ -29,7 +29,7 @@ export function ShotView({
     return <>
         <div className={clsx("flex justify-center items-center select-none",
             "w-16 max-w-16 min-w-8 aspect-[3/5] m-1 rounded-sm",
-            `${highlight ? 'text-black' : 'text-[#707070]'}`, "font-extrabold text-6xl",
+            `${highlight ? 'text-black dark:text-[]' : 'text-[#707070] dark:text-[#adadad]'}`, "font-extrabold text-6xl",
             `${typeColor[type]}`,
             "cursor-pointer transform duration-75 hover:scale-105 active:scale-95")}
             onClick={() => setType(nextType[type])}>

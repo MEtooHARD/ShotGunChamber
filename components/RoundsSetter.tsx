@@ -4,13 +4,10 @@ import { ReactNode } from "react";
 import { NameTag } from "./NameTag";
 import { NumSetter } from "./NumSetter";
 import { useRoundData } from "./RouletteHelper";
+import { OutLink, Title } from "./OutLink";
 
 const min = 1;
 const max = 10;
-
-function Title({ children }: { children: ReactNode }) {
-    return <p className="text-gray-400 font-bold text-3xl select-none">{children}</p>
-}
 
 export function RoundsSetter() {
     const roundsData = useRoundData();
@@ -23,10 +20,10 @@ export function RoundsSetter() {
     return <>
         <Title>Rounds Counter</Title>
         <Title>
-            For&ensp;<a className="text-gray-500" target="_blank"
-                href="https://store.steampowered.com/app/2835570/Buckshot_Roulette/">
+            For&ensp;<OutLink classOverr=""
+                url="https://store.steampowered.com/app/2835570/Buckshot_Roulette/">
                 Buckshot Roulette
-            </a>
+            </OutLink>
         </Title>
         <Title>(Beta)</Title>
 
@@ -48,8 +45,9 @@ export function RoundsSetter() {
             ></NumSetter>
         </div>
         <div className="m-4"></div>
-        <div className="flex text-gray-400 text-opacity-70 font-bold text-4xl items-center select-none">Made by&ensp;
-            <div className="flex flex-col text-gray-500 text-2xl">
+        <div className="flex text-gray-400 dark:text-gray-600 text-opacity-70 font-bold text-4xl items-center select-none">
+            Made by&ensp;
+            <div className="flex flex-col text-gray-500 dark:text-gray-400 text-2xl">
                 <NameTag name="MetooHARD" url="https://github.com/metoohard" title=""></NameTag>
                 <NameTag name="ToiletKing" url="https://github.com/benjounoou" title=""></NameTag>
             </div>

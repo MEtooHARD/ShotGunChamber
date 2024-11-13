@@ -50,7 +50,7 @@ export function ChamberView() {
                     className="h-14 aspect-square cursor-pointer transform duration-75 hover:scale-110 active:scale-95"
                     onClick={() => { setRound(prev => loop(prev - 1, sum)) }}
                     viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                    <polygon fillRule="evenodd" points="9.414 12 16.707 19.293 15.293 20.707 6.586 12 15.293 3.293 16.707 4.707" />
+                    <polygon fillRule="evenodd" fill="#ededed" points="9.414 12 16.707 19.293 15.293 20.707 6.586 12 15.293 3.293 16.707 4.707" />
                 </svg>
                 <NumCard
                     title="Next Live"
@@ -60,12 +60,12 @@ export function ChamberView() {
                     className="h-14 aspect-square cursor-pointer transform duration-75 hover:scale-110 active:scale-95"
                     onClick={() => { setRound(prev => loop(prev + 1, sum)) }}
                     viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                    <polygon fillRule="evenodd" points="14.586 12 7.293 4.707 8.707 3.293 17.414 12 8.707 20.707 7.293 19.293" />
+                    <polygon fillRule="evenodd" fill="#ededed" points="14.586 12 7.293 4.707 8.707 3.293 17.414 12 8.707 20.707 7.293 19.293" />
                 </svg>
             </div>
         </div >
         <div className="flex flex-wrap justify-around items-center
-            border-2 border-black
+            border-[3px] border-black dark:border-gendark dark:bg-gray-700 dark:bg-opacity-75
             rounded-2xl
             w-[95%] my-1 p-2 max-w-[72rem]"
         >
