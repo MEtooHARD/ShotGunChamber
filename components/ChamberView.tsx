@@ -9,6 +9,8 @@ import { LiveBlankCard } from "./LiveBlankCard";
 
 const toPercent = (val: number) => (Math.round(val * 10000) / 100).toFixed(2);
 
+const loop = (pos: number, sum: number) => (pos + sum) % sum;
+
 export function ChamberView() {
     const roundsData = useRoundData();
 
@@ -46,7 +48,7 @@ export function ChamberView() {
             <div className="flex m-1 h-20 items-center">
                 <svg
                     className="h-14 aspect-square cursor-pointer transform duration-75 hover:scale-110 active:scale-95"
-                    onClick={() => { if (round > 0) setRound(prev => prev - 1) }}
+                    onClick={() => { setRound(prev => loop(prev - 1, sum)) }}
                     viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                     <polygon fillRule="evenodd" points="9.414 12 16.707 19.293 15.293 20.707 6.586 12 15.293 3.293 16.707 4.707" />
                 </svg>
@@ -56,7 +58,7 @@ export function ChamberView() {
                 </NumCard>
                 <svg
                     className="h-14 aspect-square cursor-pointer transform duration-75 hover:scale-110 active:scale-95"
-                    onClick={() => { if (round < sum - 1) setRound(prev => prev + 1) }}
+                    onClick={() => { setRound(prev => loop(prev + 1, sum)) }}
                     viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                     <polygon fillRule="evenodd" points="14.586 12 7.293 4.707 8.707 3.293 17.414 12 8.707 20.707 7.293 19.293" />
                 </svg>
