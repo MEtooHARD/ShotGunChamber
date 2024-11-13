@@ -5,6 +5,8 @@ import { RoundsDataSet } from "@/classes/Roulette";
 import { RoundsSetter } from "./RoundsSetter";
 import { ChamberView } from "./ChamberView";
 import clsx from "clsx";
+import { useTheme } from "./useTheme";
+import { ThemeToggle } from "./ThemeToggle";
 
 const RoundsData = createContext<RoundsDataSet | undefined>(undefined);
 
@@ -23,9 +25,14 @@ export function RouletteHelper() {
     const [blanks, setBlanks] = useState(2);
     const rounds = useMemo(() => ({ lives, blanks }), [lives, blanks]);
 
+    const { darkMode, toggleTheme } = useTheme();
+
     return <>
+        <div className="fixed w-min">
+            <ThemeToggle></ThemeToggle>
+        </div>
         <div className="flex flex-col w-screen h-screen">
-            <div className="flex flex-col justify-center items-center w-full h-full overflow-auto pb-2 pt-24">
+            <div className="flex flex-col justify-center items-center w-full h-full overflow-auto pb-2 pt-28">
                 <RoundsData.Provider value={{ rounds: rounds, set: { Lives: setLives, Blanks: setBlanks } }}>
                     {ready
                         ? <ChamberView></ChamberView>
