@@ -5,8 +5,8 @@ import { RoundsDataSet } from "@/classes/Roulette";
 import { RoundsSetter } from "./RoundsSetter";
 import { ChamberView } from "./ChamberView";
 import clsx from "clsx";
-import { useTheme } from "./useTheme";
 import { ThemeToggle } from "./ThemeToggle";
+import { useTheme } from "../hooks/useTheme";
 
 const RoundsData = createContext<RoundsDataSet | undefined>(undefined);
 
@@ -17,15 +17,14 @@ export const useRoundData = (): RoundsDataSet => {
 }
 
 export function RouletteHelper() {
-    const maxRounds = 10;
-
     const [ready, setReady] = useState(false);
 
     const [lives, setLives] = useState(2);
     const [blanks, setBlanks] = useState(2);
     const rounds = useMemo(() => ({ lives, blanks }), [lives, blanks]);
 
-    const { darkMode, toggleTheme } = useTheme();
+    const { darkMode } = useTheme();
+    // console.log(darkMode);
 
     return <>
         <div className="fixed w-min">

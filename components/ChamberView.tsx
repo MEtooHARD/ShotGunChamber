@@ -6,10 +6,13 @@ import { NumCard } from "./NumCard";
 import { Chamber, Shot } from "@/classes/Roulette";
 import { ShotView } from "./ShotVew";
 import { LiveBlankCard } from "./LiveBlankCard";
+import { useTheme } from "../hooks/useTheme";
+import { LeftArrow } from "./arrow/LeftArrow";
+import { RightArrow } from "./arrow/RightArrow";
 
 const toPercent = (val: number) => (Math.round(val * 10000) / 100).toFixed(2);
 
-const loop = (pos: number, sum: number) => (pos + sum) % sum;
+export const loop = (pos: number, sum: number) => (pos + sum) % sum;
 
 export function ChamberView() {
     const roundsData = useRoundData();
@@ -30,6 +33,9 @@ export function ChamberView() {
         setShots(newShots);
     };
 
+    const { darkMode } = useTheme();
+    // console.log(darkMode);
+
     return <>
         <div className="flex flex-col justify-center items-center
              w-full my-1">
@@ -46,22 +52,20 @@ export function ChamberView() {
                 </LiveBlankCard>
             </div>
             <div className="flex m-1 h-20 items-center">
-                <svg
-                    className="h-14 aspect-square cursor-pointer transform duration-75 hover:scale-110 active:scale-95"
-                    onClick={() => { setRound(prev => loop(prev - 1, sum)) }}
-                    viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                    <polygon fillRule="evenodd" fill="#ededed" points="9.414 12 16.707 19.293 15.293 20.707 6.586 12 15.293 3.293 16.707 4.707" />
-                </svg>
+                <LeftArrow
+                    darkMode={darkMode}
+                    setRound={setRound}
+                    sum={sum}
+                ></LeftArrow>
                 <NumCard
                     title="Next Live"
                     value={`${toPercent(chamber.next_live_chance(round))} %`}>
                 </NumCard>
-                <svg
-                    className="h-14 aspect-square cursor-pointer transform duration-75 hover:scale-110 active:scale-95"
-                    onClick={() => { setRound(prev => loop(prev + 1, sum)) }}
-                    viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                    <polygon fillRule="evenodd" fill="#ededed" points="14.586 12 7.293 4.707 8.707 3.293 17.414 12 8.707 20.707 7.293 19.293" />
-                </svg>
+                <RightArrow
+                    darkMode={darkMode}
+                    setRound={setRound}
+                    sum={sum}
+                ></RightArrow>
             </div>
         </div >
         <div className="flex flex-wrap justify-around items-center
