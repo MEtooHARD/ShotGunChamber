@@ -23,18 +23,14 @@ export function RouletteHelper() {
     const [blanks, setBlanks] = useState(2);
     const rounds = useMemo(() => ({ lives, blanks }), [lives, blanks]);
 
-    const [darkMode] = useTheme();
-    useEffect(() => {
-        console.log(darkMode);
-    }, [darkMode]);
+    const [darkMode, toggleTheme] = useTheme();
 
     return <>
         <div className="fixed w-min">
-            <ThemeToggle></ThemeToggle>
+            <ThemeToggle darkMode={darkMode} toggle={toggleTheme}></ThemeToggle>
         </div>
         <div className="flex flex-col w-screen h-screen">
             <div className="flex flex-col justify-center items-center w-full h-full overflow-auto pb-2 pt-28">
-                <div className="text-green-400">{String(darkMode)}</div>
                 <RoundsData.Provider value={{ rounds: rounds, set: { Lives: setLives, Blanks: setBlanks } }}>
                     {ready
                         ? <ChamberView></ChamberView>
