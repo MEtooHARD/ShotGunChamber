@@ -2,7 +2,7 @@
 import { useEffect, useState } from "react";
 
 
-export function useTheme() {
+export function useTheme(): [boolean, () => void] {
     const [darkMode, setDarkMode] = useState(false);
 
     useEffect(() => {
@@ -18,5 +18,5 @@ export function useTheme() {
         localStorage.setItem('theme', newTheme);
     };
 
-    return { darkMode, toggleTheme };
+    return [darkMode, toggleTheme];
 }
