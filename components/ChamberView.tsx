@@ -33,7 +33,6 @@ export function ChamberView() {
         setShots(newShots);
     };
 
-    const { darkMode } = useTheme();
     // console.log(darkMode);
 
     return <>
@@ -53,7 +52,6 @@ export function ChamberView() {
             </div>
             <div className="flex m-1 h-20 items-center">
                 <LeftArrow
-                    darkMode={darkMode}
                     setRound={setRound}
                     sum={sum}
                 ></LeftArrow>
@@ -62,7 +60,6 @@ export function ChamberView() {
                     value={`${toPercent(chamber.next_live_chance(round))} %`}>
                 </NumCard>
                 <RightArrow
-                    darkMode={darkMode}
                     setRound={setRound}
                     sum={sum}
                 ></RightArrow>

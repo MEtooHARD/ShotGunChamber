@@ -3,13 +3,11 @@ import { loop } from "../ChamberView";
 type props = {
     setRound: React.Dispatch<React.SetStateAction<number>>;
     sum: number;
-    darkMode: boolean;
 }
 
 export function RightArrow({
     setRound,
     sum,
-    darkMode
 }: props) {
     return <svg
         className="h-14 aspect-square cursor-pointer transform duration-75 hover:scale-110 active:scale-95"
