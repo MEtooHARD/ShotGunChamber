@@ -1,6 +1,8 @@
 "use client"
 
+import { DarkMode, useTheme } from '@/hooks/useTheme';
 import './globals.css'
+import clsx from 'clsx';
 
 // export const metadata = {
 //   title: 'Chamber',
@@ -12,9 +14,13 @@ export default function RootLayout({
 }: {
   children: React.ReactNode
 }) {
+  const [darkMode, toggleTheme, isInitialized] = useTheme();
+
   return (
-    <html lang="en">
-      <body className="dark:bg-gray-900">{children}</body>
+    <html lang="en" className={clsx(darkMode ? 'dark' : '')}>
+      <DarkMode.Provider value={[darkMode, toggleTheme, isInitialized]}>
+        <body className="dark:bg-gray-900 bg-gray-200">{isInitialized && children}</body>
+      </DarkMode.Provider>
     </html>
   )
 }

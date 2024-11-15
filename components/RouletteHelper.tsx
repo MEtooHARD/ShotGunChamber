@@ -1,12 +1,12 @@
 "use client"
 
-import React, { createContext, useContext, useEffect, useMemo, useState } from "react"
+import React, { createContext, useContext, useMemo, useState } from "react"
 import { RoundsDataSet } from "@/classes/Roulette";
 import { RoundsSetter } from "./RoundsSetter";
 import { ChamberView } from "./ChamberView";
 import clsx from "clsx";
 import { ThemeToggle } from "./ThemeToggle";
-import { useTheme } from "../hooks/useTheme";
+import { useDarkMode } from "@/hooks/useTheme";
 
 const RoundsData = createContext<RoundsDataSet | undefined>(undefined);
 
@@ -23,11 +23,11 @@ export function RouletteHelper() {
     const [blanks, setBlanks] = useState(2);
     const rounds = useMemo(() => ({ lives, blanks }), [lives, blanks]);
 
-    const [darkMode, toggleTheme] = useTheme();
+    const DM = useDarkMode();
 
     return <>
         <div className="fixed w-min">
-            <ThemeToggle darkMode={darkMode} toggle={toggleTheme}></ThemeToggle>
+            <ThemeToggle></ThemeToggle>
         </div>
         <div className="flex flex-col w-screen h-screen">
             <div className="flex flex-col justify-center items-center w-full h-full overflow-auto pb-2 pt-28">
@@ -54,8 +54,8 @@ export function RouletteHelper() {
                 "h-full")}
                 onClick={() => {
                     setReady(false)
-                    setLives(2)
-                    setBlanks(2)
+                    // setLives(2)
+                    // setBlanks(2)
                 }}>
                 Reset
             </div>

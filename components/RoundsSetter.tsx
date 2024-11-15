@@ -29,7 +29,7 @@ export function RoundsSetter() {
 
         <div className="m-4"></div>
         <div className="flex flex-wrap justify-center items-center
-            w-full">
+            w-full px-4">
             <NumSetter
                 title="Live Rounds"
                 num={lives} setNum={setLives}
