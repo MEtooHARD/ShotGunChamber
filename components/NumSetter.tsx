@@ -22,7 +22,7 @@ export function NumSetter({
     return <>
         <div className="flex flex-1 flex-row flex-wrap justify-center
                 border-black dark:border-gendark dark:bg-gray-700 dark:bg-opacity-90
-                border-2 p-1 m-2 min-w-40 max-w-[18rem] basis-[46%]
+                border-2 p-1 m-2 min-w-40 max-w-[18rem] basis-[45%]
                 aspect-video rounded-2xl">
             <div className="flex flex-col justify-center items-center w-full h-full">
                 {title && <p className="flex font-bold text-xl text-center dark:text-gendark">{title}</p>}
@@ -33,8 +33,8 @@ export function NumSetter({
                         onCLick={() => { if (L) setNum(prev => prev - 1) }}>
                     </NumAltBtn>
                     <div className="flex justify-center
-                        text-4xl font-bold
-                        m-2 w-3 dark:text-gendark
+                        text-[2.5rem] font-bold
+                        mx-2 w-3 dark:text-gendark
                         select-none">
                         {num}
                     </div>

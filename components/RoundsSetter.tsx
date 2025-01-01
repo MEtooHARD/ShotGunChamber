@@ -18,7 +18,9 @@ export function RoundsSetter() {
     const setBlanks = roundsData.set.Blanks;
 
     return <>
-        <Title>Rounds Counter</Title>
+        <Title>
+            <OutLink url="https://github.com/MEtooHARD/ShotGunChamber">Rounds Counter</OutLink>
+        </Title>
         <Title>
             For&ensp;<OutLink classOverr=""
                 url="https://store.steampowered.com/app/2835570/Buckshot_Roulette/">
